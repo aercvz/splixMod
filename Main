@@ -298,6 +298,7 @@ function library:new(props)
 			ScrollBarImageTransparency = 1,
 			ScrollbarThickness = 0,
 			ScrollingDirection = Enum.ScrollingDirection.X,
+			Name = "DOUHATEBLACKPEOPLE",
 			Parent = holder
 		}
 	)
