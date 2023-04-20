@@ -274,15 +274,18 @@ function library:new(props)
 	)
 	-- 8
 	local tabs = utility.new(
-		"Frame",
+		"ScrollingFrame",
 		{
-			AnchorPoint = Vector2.new(0.5,1),
+			AnchorPoint = Vector2.new(0.5, 1),
 			BackgroundColor3 = Color3.fromRGB(20, 20, 20),
 			BorderColor3 = Color3.fromRGB(12, 12, 12),
 			BorderMode = "Inset",
 			BorderSizePixel = 1,
 			Size = UDim2.new(1,0,1,-20),
 			Position = UDim2.new(0.5,0,1,0),
+			ScrollBarImageTransparency = 1,
+			ScrollbarThickness = 0,
+			ScrollingDirection = Enum.ScrollingDirection.X,
 			Parent = holder
 		}
 	)
@@ -775,23 +778,6 @@ function watermarks:toggle(bool)
 	local watermark = self
 	--
 	watermark.outline.Visible = bool
-end
---
-function library:saveconfig(name)
-    local configTable = {}
-    for i, v in pairs(self.pointers) do
-        configTable[i] = {}
-        for c, d in pairs(v) do
-            configTable[i][c] = {}
-            for x, z in pairs(d) do
-            if typeof(z.current) == "Color3" then
-                configTable[i][c][x] = {z.current.R, z.current.G, z.current.B}
-            else
-                configTable[i][c][x] = z.current
-            end
-        end
-    end
-    return hs:JSONEncode(cfg)
 end
 --
 function library:loadconfig(config, key)
